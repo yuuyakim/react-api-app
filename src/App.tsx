@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react"
 
-function App() {
+import { execTest } from "./lib/api/test"
+import { Grid } from "@material-ui/core";
+import Header from "./components/Header";
+import Content from "./components/Content";
+
+// const App: React.FC = () => {
+//   const [message, setMessage] = useState<string>("")
+
+//   const handleExecTest = async () => {
+//     const res = await execTest()
+
+//     if (res.status === 200) {
+//       setMessage(res.data.message)
+//     }
+//   }
+
+//   useEffect(() => {
+//     handleExecTest()
+//   }, [])
+
+//   return (
+//     <h1>{message}</h1>
+//   )
+// }
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid container direction="column">
+      <Grid item>
+        <Header />
+      </Grid>
+      <Grid item container>
+        <Grid sm={2} />
+        <Grid xs={12} sm={8}>
+          <Content />
+        </Grid>
+        <Grid sm={2} />
+      </Grid>
+    </Grid>
   );
 }
 
-export default App;
+export default App
